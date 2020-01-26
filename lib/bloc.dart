@@ -19,7 +19,7 @@ class MovieBloc {
   MovieBloc(this.api) {
     _results = _query.distinct().asyncMap(api.get).asBroadcastStream();
 
-    _log = Stream.castFrom(results)
+    _log = Observable(results)
         .withLatestFrom(_query.stream, (_, query) => 'Results for $query')
         .asBroadcastStream();
   }
