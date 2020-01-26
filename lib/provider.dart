@@ -10,8 +10,7 @@ class MovieProvider extends InheritedWidget {
   bool updateShouldNotify(InheritedWidget oldWidget) => true;
 
   static MovieBloc of(BuildContext context) =>
-      (context.inheritFromWidgetOfExactType(MovieProvider) as MovieProvider)
-          .movieBloc;
+      (context.dependOnInheritedWidgetOfExactType() as MovieProvider).movieBloc;
 
   MovieProvider({Key key, MovieBloc movieBloc, Widget child})
       : this.movieBloc = movieBloc ?? MovieBloc(API()),
